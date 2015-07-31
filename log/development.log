@@ -1,0 +1,481 @@
+  [1m[36m (70.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  select sqlite_version(*)
+  [1m[36m (43.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMovies (20121121163535)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamp` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at C:/RailsApps/flix/db/migrate/20121121163535_create_movies.rb:8)
+  [1m[35m (1.0ms)[0m  CREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "rating" varchar, "total_gross" decimal, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20121121163535"]]
+  [1m[35m (42.6ms)[0m  commit transaction
+Migrating to AddFieldsToMovies (20121121180707)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  ALTER TABLE "movies" ADD "description" text
+  [1m[36m (0.0ms)[0m  [1mALTER TABLE "movies" ADD "released_on" date[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20121121180707"]]
+  [1m[36m (43.1ms)[0m  [1mcommit transaction[0m
+Migrating to AddMoreFieldsToMovies (20121210234158)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.6ms)[0m  [1mALTER TABLE "movies" ADD "cast" varchar[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "movies" ADD "director" varchar
+  [1m[36m (1.0ms)[0m  [1mALTER TABLE "movies" ADD "duration" varchar[0m
+  [1m[35m (0.0ms)[0m  ALTER TABLE "movies" ADD "image_file_name" varchar
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20121210234158"]]
+  [1m[35m (48.5ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (3.0ms)[0m  [1mINSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Iron Man"], ["description", "When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."], ["image_file_name", "ironman.jpg"], ["cast", "Robert Downey Jr., Gwyneth Paltrow and Terrence Howard"], ["released_on", "2008-05-02"], ["duration", "126 min"], ["director", "Jon Favreau"], ["rating", "PG-13"], ["total_gross", 318412101.0], ["created_at", "2015-07-31 21:52:10.805958"], ["updated_at", "2015-07-31 21:52:10.805958"]]
+  [1m[35m (50.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["title", "Superman"], ["description", "An alien orphan is sent from his dying planet to Earth, where he grows up to become his adoptive home's first and greatest super-hero."], ["image_file_name", "superman.jpg"], ["cast", "Christopher Reeve, Margot Kidder and Gene Hackman"], ["released_on", "1978-12-15"], ["duration", "143 min"], ["director", "Richard Donner"], ["rating", "PG"], ["total_gross", 134218018.0], ["created_at", "2015-07-31 21:52:10.864036"], ["updated_at", "2015-07-31 21:52:10.864036"]]
+  [1m[36m (36.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Spider-Man"], ["description", "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family."], ["image_file_name", "spiderman.jpg"], ["cast", "Tobey Maguire, Kirsten Dunst and Willem Dafoe"], ["released_on", "2002-05-03"], ["duration", "121 min"], ["director", "Sam Raimi"], ["rating", "PG-13"], ["total_gross", 403706375.0], ["created_at", "2015-07-31 21:52:10.909208"], ["updated_at", "2015-07-31 21:52:10.909208"]]
+  [1m[35m (39.4ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.1ms)[0m  INSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["title", "Batman"], ["description", "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker."], ["image_file_name", "batman.jpg"], ["cast", "Michael Keaton, Jack Nicholson and Kim Basinger"], ["released_on", "1989-06-23"], ["duration", "126 min"], ["director", "Tim Burton"], ["rating", "PG-13"], ["total_gross", 251188924.0], ["created_at", "2015-07-31 21:52:10.956356"], ["updated_at", "2015-07-31 21:52:10.956356"]]
+  [1m[36m (37.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Catwoman"], ["description", "Patience Philips seems destined to spend her life apologizing for taking up space. Despite her artistic ability&mdash;she has a more than respectable career as a graphic designer."], ["image_file_name", "catwoman.jpg"], ["cast", "Halle Berry, Sharon Stone and Benjamin Bratt"], ["released_on", "2004-07-23"], ["duration", "101 min"], ["director", "Jean-Christophe 'Pitof' Comar"], ["rating", "PG-13"], ["total_gross", 40200000.0], ["created_at", "2015-07-31 21:52:11.002766"], ["updated_at", "2015-07-31 21:52:11.002766"]]
+  [1m[35m (36.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "movies" ("title", "description", "image_file_name", "cast", "released_on", "duration", "director", "rating", "total_gross", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["title", "Batman vs. Godzilla"], ["description", "An epic battle between The Caped Crusader and the fire-breathing dinosaur Gojira. Hang on to your popcorn, kids!"], ["image_file_name", "batman-vs-godzilla.jpg"], ["cast", "Bruce Wayne, Gojira"], ["released_on", "2015-08-10"], ["duration", "211 min"], ["director", "Ishiro Honda"], ["rating", "PG-13"], ["total_gross", 387623910.0], ["created_at", "2015-07-31 21:52:11.047763"], ["updated_at", "2015-07-31 21:52:11.047763"]]
+  [1m[36m (38.1ms)[0m  [1mcommit transaction[0m
+  [1m[36m (70.6ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "rating" varchar, "total_gross" decimal, "created_at" datetime, "updated_at" datetime, "description" text, "released_on" date, "cast" varchar, "director" varchar, "duration" varchar, "image_file_name" varchar) [0m
+  [1m[35m (38.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (38.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.0ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (45.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121210234158')
+  [1m[36m (44.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20121121163535')[0m
+  [1m[35m (39.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20121121180707')
+
+
+Started GET "/" for ::1 at 2015-07-31 16:04:16 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE (released_on <= '2015-07-31 22:04:17.131139')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (283.7ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 1568ms (Views: 1550.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2015-07-31 16:04:18 -0600
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE (released_on <= '2015-07-31 22:04:18.690862')  ORDER BY released_on desc[0m
+  Rendered movies/index.html.erb within layouts/application (13.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 67ms (Views: 65.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/normalize.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/buttons.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/forms.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/elements.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/movies.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/layout.self.css?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/jquery.self.js?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for ::1 at 2015-07-31 16:04:18 -0600
+
+
+Started GET "/assets/turbolinks.self.js?body=1" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/movies.self.js?body=1" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/batman.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/ironman.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/spiderman.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/catwoman.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/superman.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/add.png" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/background.jpg" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/arrow.png" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/assets/logo.png" for ::1 at 2015-07-31 16:04:19 -0600
+
+
+Started GET "/movies/new" for ::1 at 2015-07-31 16:04:30 -0600
+Processing by MoviesController#new as HTML
+  Rendered movies/_form.html.erb (22.0ms)
+  Rendered movies/new.html.erb within layouts/application (24.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 77ms (Views: 76.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies" for ::1 at 2015-07-31 16:04:34 -0600
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE (released_on <= '2015-07-31 22:04:34.876772')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (12.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 72ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/1" for ::1 at 2015-07-31 16:04:38 -0600
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 69ms (Views: 60.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:04:52 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/_form.html.erb (3.0ms)
+  Rendered movies/edit.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 61ms (Views: 60.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-07-31 16:37:40 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE (released_on <= '2015-07-31 22:37:40.224354')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (127.1ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 233ms (Views: 215.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/buttons.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/movies.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/normalize.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/layout.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/elements.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/forms.self.css?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/jquery.self.js?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/turbolinks.self.js?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/movies.self.js?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/ironman.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/catwoman.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/spiderman.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/batman.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/superman.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/logo.png" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/add.png" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/background.jpg" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/assets/arrow.png" for ::1 at 2015-07-31 16:37:40 -0600
+
+
+Started GET "/movies/1" for ::1 at 2015-07-31 16:37:46 -0600
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 66ms (Views: 57.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:37:49 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/_form.html.erb (64.3ms)
+  Rendered movies/edit.html.erb within layouts/application (66.3ms)
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (uninitialized constant Movie::RATINGS):
+    11:       </li>
+    12:       <li class="required">
+    13:         <%= f.label :rating %>
+    14:         <%= f.select :rating, Movie::RATINGS, prompt: "Pick one" %>
+    15:       </li>
+    16:       <li class="required">
+    17:         <%= f.label :released_on %>
+  app/views/movies/_form.html.erb:14:in `block in _app_views_movies__form_html_erb__772618670_83513688'
+  app/views/movies/_form.html.erb:1:in `_app_views_movies__form_html_erb__772618670_83513688'
+  app/views/movies/edit.html.erb:5:in `_app_views_movies_edit_html_erb__955056153_83496564'
+
+
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (56.1ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (36.1ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (73.7ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:37:50 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/_form.html.erb (3.0ms)
+  Rendered movies/edit.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.0ms)
+
+ActionView::Template::Error (uninitialized constant Movie::RATINGS):
+    11:       </li>
+    12:       <li class="required">
+    13:         <%= f.label :rating %>
+    14:         <%= f.select :rating, Movie::RATINGS, prompt: "Pick one" %>
+    15:       </li>
+    16:       <li class="required">
+    17:         <%= f.label :released_on %>
+  app/views/movies/_form.html.erb:14:in `block in _app_views_movies__form_html_erb__772618670_76069116'
+  app/views/movies/_form.html.erb:1:in `_app_views_movies__form_html_erb__772618670_76069116'
+  app/views/movies/edit.html.erb:5:in `_app_views_movies_edit_html_erb__955056153_76085412'
+
+
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (23.4ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (20.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (46.0ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:38:03 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+SyntaxError (C:/RailsApps/flix/app/models/movie.rb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  validates :title, released_on, :duration presence: true
+                                                   ^):
+  app/models/movie.rb:3: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+  app/controllers/movies_controller.rb:11:in `edit'
+
+
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.3ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (22.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (47.0ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:38:54 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.0ms)
+
+NameError (undefined local variable or method `released_on' for #<Class:0x9270168>):
+  app/models/movie.rb:3:in `<class:Movie>'
+  app/models/movie.rb:1:in `<top (required)>'
+  app/controllers/movies_controller.rb:11:in `edit'
+
+
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (21.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.0ms)
+  Rendered C:/RubyStack/ruby/lib/ruby/gems/2.1.0/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (44.2ms)
+
+
+Started GET "/" for ::1 at 2015-07-31 16:41:43 -0600
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE (released_on <= '2015-07-31 22:41:43.017317')  ORDER BY released_on desc
+  Rendered movies/index.html.erb within layouts/application (16.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 72ms (Views: 70.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/movies.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/normalize.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/application.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/layout.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/elements.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/buttons.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/forms.self.css?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/jquery.self.js?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/jquery_ujs.self.js?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/turbolinks.self.js?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/movies.self.js?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/ironman.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/application.self.js?body=1" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/spiderman.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/catwoman.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/batman.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/superman.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/logo.png" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/add.png" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/background.jpg" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/assets/arrow.png" for ::1 at 2015-07-31 16:41:43 -0600
+
+
+Started GET "/movies/1" for ::1 at 2015-07-31 16:41:45 -0600
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (1.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 58ms (Views: 56.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies/1/edit" for ::1 at 2015-07-31 16:41:47 -0600
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/_form.html.erb (26.0ms)
+  Rendered movies/edit.html.erb within layouts/application (27.0ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_sidebar.html.erb (0.0ms)
+  Rendered layouts/_footer.html.erb (0.0ms)
+Completed 200 OK in 82ms (Views: 80.3ms | ActiveRecord: 0.0ms)
